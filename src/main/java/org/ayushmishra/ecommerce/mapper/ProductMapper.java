@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductMapper {
 
-    public ProductEntity mapToEntity(ProductRequest productRequest){
+    public ProductEntity mapToEntity(ProductRequest productRequest) {
         ProductEntity productEntity = new ProductEntity();
 
         productEntity.setName(productRequest.getName());
@@ -19,7 +19,7 @@ public class ProductMapper {
         return productEntity;
     }
 
-    public ProductResponse mapToResponse(ProductEntity productEntity){
+    public ProductResponse mapToResponse(ProductEntity productEntity) {
         ProductResponse productResponse = new ProductResponse();
         productResponse.setId(productEntity.getId());
         productResponse.setName(productEntity.getName());
@@ -29,6 +29,12 @@ public class ProductMapper {
 
         return productResponse;
     }
+
+    // people think fear makes u weak, they couldn't be more wrong . if harnessed correctly fear can be the most powerful force in the universe
+
+    // Fear is just evolutionary intelligence
+
+    // Some me a species that's fearless and i will show u something on extinction list
 
 
 }

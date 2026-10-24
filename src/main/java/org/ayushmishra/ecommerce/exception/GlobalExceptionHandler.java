@@ -1,5 +1,6 @@
 package org.ayushmishra.ecommerce.exception;
 
+import jakarta.validation.constraints.Email;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -12,6 +13,19 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<Map<String,String>> handleInvalidCredentialsException(InvalidCredentialsException e){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(Map.of("message", e.getMessage()));
+    }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<Map<String,String>> handleDuplicateEmail(EmailAlreadyExistsException ex){
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Map.of("message",ex.getMessage()));
+    }
+
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<Map<String,String>> handleProductNotFoundException(ProductNotFoundException e){
 
